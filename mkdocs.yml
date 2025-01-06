@@ -16,7 +16,7 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 
-        
+
     custom_dir: docs/overrides
     
     font:
@@ -24,8 +24,8 @@ theme:
     icon:
         edit: material/pencil 
         view: material/eye
-    logo: logo/CAD.png  # Path to your logo
-    favicon: logo/CAD.ico  # Path to your favicon
+    logo: assets/CAD.png  # Path to your logo
+    favicon: assets/CAD.ico  # Path to your favicon
     features:
     # - navigation.tabs
      - content.action.edit
