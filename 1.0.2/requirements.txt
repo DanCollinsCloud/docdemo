@@ -1,0 +1,7 @@
+mkdocs-material
+mkdocs-versioning
+mkdocs
+mike
+mkdocs-git-revision-date-localized-plugin
+mkdocs-git-committers-plugin-2
+mkdocs-git-latest-changes-plugin
