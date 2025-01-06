@@ -41,8 +41,6 @@ jobs:
 
   publish-docs:
     name: Publish documentation 📚 to GitHub Pages
-    needs:
-      - github-release
     runs-on: ubuntu-latest
 
     permissions:
