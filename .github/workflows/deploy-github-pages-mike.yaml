@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'package.json'
   workflow_dispatch:
 permissions:
   contents: write
@@ -29,24 +31,28 @@ jobs:
 
       - name: Setup Docs Deploy
         run: |
-          git config --global user.name "Docs Deploy"
-          git config --global user.email "docs.deploy@example.co.uk"
+          git config --global user.name "Bot Docs Deploy"
+          git config --global user.email "botdocs@ghbot.co.uk"
 
       - name: Increment npm version
         run: |
-          new_version=$(npm version patch -m "v%s")
-          echo "VERSION=${new_version}" >> $GITHUB_ENV
 
-      - name: Commit version change
-        run: |
-          git add package.json
-          git commit -m "Increment version to ${new_version}"
-          git push
+          current_version=$(jq -r '.version' package.json)
+          new_version=$(echo $current_version | awk -F. -v OFS=. '{$NF++;print}')
+          jq --arg new_version "$new_version" '.version = $new_version' package.json 
+
+          echo "VERSION=${new_version}" >> $GITHUB_ENV
 
       - name: Build and deploy with mike
         run: |
           mike deploy --push --config-file mkdocs.yml --update-aliases ${{ env.VERSION }} latest
           mike set-default --push ${{ env.VERSION }}
+
+      - name: commit new version
+        run: |
+          git add package.json
+          git commit -m "Increment version to $new_version"
+          git push
 
   deploy_mkdocs:
     needs: build_mkdocs
