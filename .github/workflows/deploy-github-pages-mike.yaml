@@ -24,6 +24,11 @@ jobs:
           python-version: 3.9
       - name: Install dependencies
         run: pip install -r ./docs/requirements.txt
+
+      - name: Setup Docs Deploy
+        run: |
+          git config --global user.name "Docs Deploy"
+          git config --global user.email "docs.deploy@example.co.uk"
       # - name: Generate random version
       #   id: generate_version
       #   run: echo "VERSION=$(echo $((RANDOM % 10)).$((RANDOM % 10)).$((RANDOM % 10)))" >> $GITHUB_ENV
@@ -31,10 +36,7 @@ jobs:
       - run: npm version minor -m "v%s"
       - run: echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
 
-      - name: Setup Docs Deploy
-        run: |
-          git config --global user.name "Docs Deploy"
-          git config --global user.email "docs.deploy@example.co.uk"
+
       - name: Build and deploy with mike
         run: |
           mike deploy --push --config-file mkdocs.yml --update-aliases ${{ env.VERSION }} latest
