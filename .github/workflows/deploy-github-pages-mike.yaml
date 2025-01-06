@@ -32,7 +32,7 @@ jobs:
       # - name: Generate random version
       #   id: generate_version
       #   run: echo "VERSION=$(echo $((RANDOM % 10)).$((RANDOM % 10)).$((RANDOM % 10)))" >> $GITHUB_ENV
-      - run: new_version=$(node -p "require('./package.json').version")) | awk -F. -v OFS=. '{$NF += 1 ; print}')
+      - run: new_version=$(node -p "require('./package.json').version") | awk -F. -v OFS=. '{$NF += 1 ; print}')
       - run: npm version patch -m "v%s"
       - run: echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
       - run: echo ${{env.VERSION}}
