@@ -1,17 +1,31 @@
 site_name: Cloud Architecture Docs
 theme:
     name: material
-    custom_dir: docs/overrides
+  
     palette:
-        primary: 'white'
-        accent: 'black'
+    - media: '(prefers-color-scheme: light)'
+      primary: teal
+      scheme: default
+      toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
+    - media: '(prefers-color-scheme: dark)'
+      primary: teal
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+        
+    custom_dir: docs/overrides
+    
     font:
-        text: 'Segoe UI'
-        code: 'Roboto Mono'
+        text: 'Work Sans'
     icon:
         edit: material/pencil 
         view: material/eye
     logo: logo/CAD.png  # Path to your logo
+    favicon: logo/CAD.ico  # Path to your favicon
     features:
     # - navigation.tabs
      - content.action.edit
