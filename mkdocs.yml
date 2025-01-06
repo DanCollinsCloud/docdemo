@@ -8,12 +8,20 @@ theme:
     font:
         text: 'Segoe UI'
         code: 'Roboto Mono'
-    logo: assets/CAD.png  # Path to your logo=
-    favicon: assets/CAD.png  # Path to your favicon
-    # features:
+    icon:
+        edit: material/pencil 
+        view: material/eye
+    logo: logo/CAD.png  # Path to your logo
+    features:
     # - navigation.tabs
+     - content.action.edit
 
 site_url: 'http://localhost/'
+repo_url: https://github.com/DanCollinsCloud/docdemo
+
+edit_uri: edit/main/docs/
+
+
 
 extra:
   version:
