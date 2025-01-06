@@ -8,7 +8,8 @@ theme:
     font:
         text: 'Segoe UI'
         code: 'Roboto Mono'
-    logo: logo/CAD.png  # Path to your logo
+    logo: assets/CAD.png  # Path to your logo=
+    favicon: assets/CAD.png  # Path to your favicon
     # features:
     # - navigation.tabs
 
