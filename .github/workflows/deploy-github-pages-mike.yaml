@@ -32,3 +32,12 @@ jobs:
         run: mike deploy --push --update-aliases ${{ github.event.release.tag_name }} latest
       - name: Push to gh-pages
         run: mike set-default latest
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
