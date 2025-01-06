@@ -1,6 +1,7 @@
 site_name: Cloud Architecture Docs
 theme:
     name: material
+    custom_dir: docs/overrides
     palette:
         primary: 'white'
         accent: 'black'
@@ -8,8 +9,14 @@ theme:
         text: 'Segoe UI'
         code: 'Roboto Mono'
     logo: logo/CAD.png  # Path to your logo
+    features:
+    - navigation.tabs
 
+site_url: 'http://localhost/'
 
+extra:
+  version:
+    provider: mike
 
-extra_css:
-    - css/extra.css
+plugins:
+  - git-revision-date-localized
