@@ -21,8 +21,6 @@ repo_url: https://github.com/DanCollinsCloud/docdemo
 
 edit_uri: edit/main/docs/
 
-
-
 extra:
   version:
     provider: mike
