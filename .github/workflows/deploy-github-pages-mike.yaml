@@ -1,0 +1,34 @@
+name: Build GitHub Pages
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+      - run: pip install -r ./docs/requirements.txt
+      - name: Setup Docs Deploy
+        run: |
+          git config --global user.name "Docs Deploy"
+          git config --global user.email "docs.deploy@example.co.uk"
+      - name: Build Docs Website
+        run: mike deploy --push --update-aliases ${{ github.event.release.tag_name }} latest
+      - name: Push to gh-pages
+        run: mike set-default latest
