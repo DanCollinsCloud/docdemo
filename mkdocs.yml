@@ -20,3 +20,6 @@ extra:
 
 plugins:
   - git-revision-date-localized
+  - git-committers:
+      repository: DanCollinsCloud/docdemo
+      branch: main
