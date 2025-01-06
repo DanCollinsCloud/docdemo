@@ -2,3 +2,5 @@
 
 ## Overview
 This is an overview of the resource.
+
+{{ latest_changes }}
