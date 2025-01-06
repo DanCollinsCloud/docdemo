@@ -9,8 +9,8 @@ theme:
         text: 'Segoe UI'
         code: 'Roboto Mono'
     logo: logo/CAD.png  # Path to your logo
-    features:
-    - navigation.tabs
+    # features:
+    # - navigation.tabs
 
 site_url: 'http://localhost/'
 
