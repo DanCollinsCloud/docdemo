@@ -1,14 +1,14 @@
 site_name: Cloud Architecture Docs
 theme:
-    name: material
+  name: material
   
-    palette:
+  palette:
     - media: '(prefers-color-scheme: light)'
       primary: 'blue grey'
       scheme: default
       toggle:
-      icon: material/brightness-7
-      name: Switch to dark mode
+        icon: material/brightness-7
+        name: Switch to dark mode
     - media: '(prefers-color-scheme: dark)'
       primary: 'blue grey'
       scheme: slate
@@ -16,19 +16,17 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 
-
-    custom_dir: docs/overrides
-    
-    font:
-        text: 'Work Sans'
-    icon:
-        edit: material/pencil 
-        view: material/eye
-    logo: assets/CAD.png  # Path to your logo
-    favicon: assets/CAD.ico  # Path to your favicon
-    features:
-    # - navigation.tabs
-     - content.action.edit
+  custom_dir: docs/overrides
+  
+  font:
+    text: 'Work Sans'
+  icon:
+    edit: material/pencil 
+    view: material/eye
+  logo: assets/CAD.png  # Path to your logo
+  favicon: assets/CAD.ico  # Path to your favicon
+  features:
+    - content.action.edit
 
 site_url: 'http://localhost/'
 repo_url: https://github.com/DanCollinsCloud/docdemo
