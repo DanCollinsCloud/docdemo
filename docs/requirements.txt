@@ -2,3 +2,4 @@ mkdocs-material
 mkdocs-versioning
 mkdocs
 mike
+mkdocs-git-revision-date-localized-plugin
