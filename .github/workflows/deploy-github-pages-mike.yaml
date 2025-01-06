@@ -33,7 +33,7 @@ jobs:
       #   id: generate_version
       #   run: echo "VERSION=$(echo $((RANDOM % 10)).$((RANDOM % 10)).$((RANDOM % 10)))" >> $GITHUB_ENV
 
-      - run: npm version minor -m "v%s"
+      - run: npm version patch -m "v%s"
       - run: echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
 
 
