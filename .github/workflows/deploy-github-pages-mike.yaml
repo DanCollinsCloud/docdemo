@@ -1,0 +1,54 @@
+name: Build and Deploy GitHub Pages
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build_mkdocs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: pip install -r ./docs/requirements.txt
+      - name: Generate random version
+        id: generate_version
+        run: echo "VERSION=$(echo $((RANDOM % 10)).$((RANDOM % 10)).$((RANDOM % 10)))" >> $GITHUB_ENV
+      - name: Build and deploy with mike
+        run: |
+          mike deploy --push --config-file mkdocs.yml --update-aliases ${{ env.VERSION }} latest
+          mike set-default --push ${{ env.VERSION }}
+
+  deploy_mkdocs:
+    needs: build_mkdocs
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
